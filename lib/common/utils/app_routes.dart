@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../src/entrypoint/views/entrypoint.dart';
+import '../../src/onboarding/views/onboarding_page.dart';
 import '../../src/splashScreen/views/Splashscreen_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -17,12 +18,12 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => AppEntryPoint(),
+      builder: (context, state) => const AppEntryPoint(),
     ),
-    // GoRoute(
-    //   path: '/onboarding',
-    //   builder: (context, state) => const OnBoardingScreen(),
-    // ),
+    GoRoute(
+      path: '/onboarding',
+      builder: (context, state) => const OnBoardingScreen(),
+    ),
     // GoRoute(
     //   path: '/review',
     //   builder: (context, state) => const ReviewsPage(),

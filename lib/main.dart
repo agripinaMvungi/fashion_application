@@ -1,12 +1,24 @@
+import 'package:fashon_app/common/utils/app_routes.dart';
 import 'package:fashon_app/common/utils/environment.dart';
+import 'package:fashon_app/common/utils/kstrings.dart';
+import 'package:fashon_app/src/onboarding/views/controllers/onboarding_notifier.dart';
 import 'package:fashon_app/src/splashScreen/views/Splashscreen_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: Environment.fileName);
-  runApp(const MyApp());
+  GetStorage.init();
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => OnboardingNotifier())
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,15 +27,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    return ScreenUtilInit(
+      designSize: MediaQuery.of(context).size,
+      minTextAdapt: true,
+      splitScreenMode: false,
+      useInheritedMediaQuery: true,
+      builder: (_, child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: AppText.kAppName,
+          theme: ThemeData(
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: '',),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          routerConfig: router,
+        );
+      },
+      child: const SplashScreen(),
     );
   }
 }
