@@ -3,6 +3,7 @@ class AppText {
   static const String kGetStarted = "Let's Get Started";
   static const String kAppName = 'Fashion App';
   static const String kCategories = 'Categories';
+  static const String kHaveAccount = 'Already have an account?';
   static const String kNotifications = 'Notifications';
   static const String kAddresses = 'Addresses';
   static const String kAddShipping = 'Add Shipping Address';

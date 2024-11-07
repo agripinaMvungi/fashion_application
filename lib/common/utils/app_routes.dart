@@ -1,8 +1,11 @@
+import 'package:fashon_app/src/auth/views/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../src/entrypoint/views/entrypoint.dart';
+import '../../src/notification/views/notification_screen.dart';
 import '../../src/onboarding/views/onboarding_page.dart';
+import '../../src/search/views/search_screen.dart';
 import '../../src/splashScreen/views/Splashscreen_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -18,7 +21,7 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => const AppEntryPoint(),
+      builder: (context, state) =>  AppEntryPoint(),
     ),
     GoRoute(
       path: '/onboarding',
@@ -36,10 +39,10 @@ final GoRouter _router = GoRouter(
     //   path: '/verification',
     //   builder: (context, state) => const VerificationPage(),
     // ),
-    // GoRoute(
-    //   path: '/search',
-    //   builder: (context, state) => const SearchPage(),
-    // ),
+    GoRoute(
+      path: '/search',
+      builder: (context, state) => const SearchScreen(),
+    ),
     // GoRoute(
     //   path: '/help',
     //   builder: (context, state) => const HelpCenterPage(),
@@ -48,10 +51,10 @@ final GoRouter _router = GoRouter(
     //   path: '/orders',
     //   builder: (context, state) => const OrdersPage(),
     // ),
-    // GoRoute(
-    //   path: '/login',
-    //   builder: (context, state) => const LoginPage(),
-    // ),
+    GoRoute(
+      path: '/login',
+      builder: (context, state) => const LoginScreen(),
+    ),
     // GoRoute(
     //   path: '/register',
     //   builder: (context, state) => const RegistrationPage(),
@@ -75,10 +78,10 @@ final GoRouter _router = GoRouter(
     //   builder: (context, state) => const AddressesListPage(),
     // ),
     //
-    //  GoRoute(
-    //   path: '/notifications',
-    //   builder: (context, state) => const NotificationPage(),
-    // ),
+     GoRoute(
+      path: '/notifications',
+      builder: (context, state) => const NotificationScreen(),
+    ),
     //
     //  GoRoute(
     //   path: '/tracking',

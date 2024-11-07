@@ -1,6 +1,7 @@
 import 'package:fashon_app/common/utils/app_routes.dart';
 import 'package:fashon_app/common/utils/environment.dart';
 import 'package:fashon_app/common/utils/kstrings.dart';
+import 'package:fashon_app/src/entrypoint/controller/bottom_tab_notifier.dart';
 import 'package:fashon_app/src/onboarding/views/controllers/onboarding_notifier.dart';
 import 'package:fashon_app/src/splashScreen/views/Splashscreen_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,8 @@ void main() async{
   GetStorage.init();
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => OnboardingNotifier())
+      ChangeNotifierProvider(create: (_) => OnboardingNotifier()),
+      ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
     ],
     child: const MyApp(),
   ));
